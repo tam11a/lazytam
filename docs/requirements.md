@@ -122,7 +122,7 @@ hardware (`hw`), or not yet (`—`).
 | FR-PRJ-2 | CLAUDE.md, CONTRIBUTING.md and docs for architecture, modules, themes, brand and planning | Done | — |
 | FR-PRJ-3 | CI: lint, tests on Python 3.11 and 3.13, full install in an Arch container | Done | CI |
 | FR-PRJ-4 | Issue forms and a pull request template | Done | — |
-| FR-PRJ-5 | A license | Planned (decision open: [D-020](decisions/020-license.md)) | — |
+| FR-PRJ-5 | A license: MIT for code and docs, brand reserved ([D-020](decisions/020-license.md)) | Done | — |
 | FR-PRJ-6 | Versioned releases and a changelog | Planned | — |
 
 ## Non-functional requirements

@@ -149,4 +149,8 @@ rough edges, and please [open an issue](../../issues/new/choose) when you hit on
 - joypad is inspired by [bjarneo's NES theme](https://github.com/bjarneo/omarchy-nes-theme), with its own colors.
 - Theme format from [Omarchy](https://github.com/basecamp/omarchy).
 
-lazytam doesn't have a license yet, so for now it's for the people it's been shared with.
+## License
+
+The code and docs are [MIT](LICENSE). The lazytam name, logo and wallpapers aren't: use
+them with lazytam, but give a fork its own name and art. See
+[using the brand](docs/brand.md#using-the-brand).

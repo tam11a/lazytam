@@ -15,6 +15,7 @@ What lazytam does today, what's next, and everything it could grow into. Items h
 - Update lazytam and the system with `lazytam update`, and check health with
   `lazytam doctor`.
 - Develop lazytam itself from any Linux or WSL machine, with tests and CI.
+- Fork and share the code under MIT ([D-020](decisions/020-license.md)).
 
 ## Where it's going
 
@@ -88,10 +89,10 @@ Goal: friends can install, update and contribute with confidence.
 
 | ID | Item | Size | Satisfies | Done when |
 |---|---|---|---|---|
-| R-23 | **Choose a license.** | S | FR-PRJ-5 | [D-020](decisions/020-license.md) is decided and `LICENSE` exists |
+| R-23 | **Choose a license.** *Done: MIT for code and docs, brand reserved.* | S | FR-PRJ-5 | [D-020](decisions/020-license.md) is decided and `LICENSE` exists |
 | R-24 | **Releases.** Version tags, a CHANGELOG, `lazytam update` following releases rather than `main` by default | M | FR-PRJ-6 | v0.5.0 is tagged with notes |
 | R-25 | **Module management.** `lazytam module enable/disable` and `lazytam uninstall` | M | FR-CLI-5, FR-CLI-6 | Turning a module off removes its lazytam-owned files and leaves user files |
-| R-26 | **Public-readiness checklist.** Remove the old NES copy from git history (or publish from a fresh repo), audit every asset's rights, add a license | S | NFR-26 | Checklist passes |
+| R-26 | **Public-readiness checklist.** Remove the old NES copy from git history (or publish from a fresh repo), audit every asset's rights | S | NFR-26 | Checklist passes |
 | R-27 | **Figma ↔ theme sync check.** A script that compares Figma variable values with `themes/*/colors.toml` | M | NFR-25 | CI or `make` flags a mismatch |
 | R-28 | **Shell completions** for bash and zsh | S | FR-CLI-7 | Tab completes commands and theme names |
 

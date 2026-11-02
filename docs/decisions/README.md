@@ -25,7 +25,7 @@ a new record that supersedes it.
 | [017](017-readme-header.md) | The README header is an animated SVG generated from outlined glyphs | Docs | Accepted |
 | [018](018-testing-and-ci.md) | Unit + CLI tests anywhere, full install in an Arch container in CI | Quality | Accepted |
 | [019](019-private-repo.md) | Host on GitHub as a private repo for now | Project | Accepted |
-| [020](020-license.md) | Choose a license | Project | **Open** |
+| [020](020-license.md) | Code and docs under MIT; the brand stays reserved | Project / legal | Accepted |
 | [021](021-remove-bundled-nes.md) | Remove the bundled NES theme; install it like any other theme | Theming / legal | Accepted |
 
 ## Writing a new record

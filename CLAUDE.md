@@ -88,6 +88,8 @@ it never touches your real config. Nothing here needs root except `make arch`'s 
   installed with `lazytam theme install`, not copied into `themes/`. Git history before
   the removal commit still contains an unlicensed NES copy; clean the history (or start a
   fresh repo) before ever making lazytam public. See [D-021](docs/decisions/021-remove-bundled-nes.md).
+- Code and docs are MIT. The name, logo, wallpapers and `docs/assets/` images are not
+  ([docs/brand.md](docs/brand.md#using-the-brand), [D-020](docs/decisions/020-license.md)).
 - The brand (logo, palettes, wallpapers, README glyphs) lives in the lazytam Figma file;
   see [docs/brand.md](docs/brand.md). Wallpapers are exported from Figma at 1920×1080.
 - Hyprland's window-rule syntax changes between releases, which is why

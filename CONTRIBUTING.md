@@ -76,6 +76,10 @@ Open an issue first for anything big, so we can agree on the shape before you bu
 
 ## Licensing
 
-lazytam doesn't have a license yet. Until it does, contributions are accepted on the
-understanding that they can be relicensed with the project. Don't contribute anything you
-didn't make or don't have the right to share.
+Code and docs are [MIT](LICENSE). By contributing them, you agree they're released under
+that license.
+
+Wallpapers and other art stay yours. By adding them to the repo, you let lazytam ship and
+use them on the same terms as its own art ([docs/brand.md](docs/brand.md#using-the-brand));
+say in the pull request that you made them. Don't contribute anything you didn't make or
+don't have the right to share.
