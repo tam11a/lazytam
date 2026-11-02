@@ -45,7 +45,7 @@ hardware (`hw`), or not yet (`—`).
 | FR-THM-3 | Themes render configs for Hyprland, hyprlock, Waybar, kitty, fuzzel, mako, btop and tmux | Done | unit, cli |
 | FR-THM-4 | Switching themes reloads the running desktop (Hyprland, Waybar, mako, kitty, wallpaper) | Partial | — |
 | FR-THM-5 | Light themes swap the terminal's black and white slots | Done | unit, cli |
-| FR-THM-6 | Built-in themes: `joypad` (default), `paper` (light); `nes` bundled for private use | Done | unit, cli |
+| FR-THM-6 | Built-in themes: `joypad` (default) and `paper` (light), each with every color key and wallpapers | Done | unit, cli |
 | FR-THM-7 | `lazytam theme install <git-url>` installs any Omarchy-format theme | Done | — |
 | FR-THM-8 | Each theme's wallpapers cycle with `lazytam bg next`; the position resets when the theme changes | Done | unit, cli |
 | FR-THM-9 | `lazytam theme pick` (`Super` `Ctrl` `T`) chooses a theme from the launcher | Done | — |
@@ -210,5 +210,9 @@ lighten it or stop using it for text. Tracked in the [roadmap](roadmap.md).
 | ID | Requirement | Status | Verified |
 |---|---|---|---|
 | NFR-25 | The Figma variables and `themes/*/colors.toml` stay in sync | Partial | — |
-| NFR-26 | Nothing unlicensed ships publicly: `themes/nes` is removed before any public release | Planned | — |
+| NFR-26 | Nothing unlicensed ships: no third-party themes or art are bundled | Partial | — |
 | NFR-27 | Wallpapers and artwork are original or properly licensed | Done | — |
+
+NFR-26 is Partial: the bundled NES copy was removed from the working tree
+([D-021](decisions/021-remove-bundled-nes.md)), but it's still in the git history of the
+first commits. Clean the history before any public release.

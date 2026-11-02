@@ -20,8 +20,9 @@ CONTRIBUTING.md currently says contributions may be relicensed with the project.
 
 ## What has to happen either way
 
-- The license covers lazytam's own code, docs and art, not `themes/nes` (unlicensed, see
-  [014](014-bundled-nes.md)). Remove it or get permission before any public release.
+- The license covers lazytam's own code, docs and art. The unlicensed NES copy is gone from
+  the repo ([021](021-remove-bundled-nes.md)) but still in early git history; clean that
+  before any public release.
 - Add `LICENSE`, update the README's last line and CONTRIBUTING's licensing section.
 - Brand assets (logo, wallpapers) can be licensed separately if you want to keep the name
   and look yours while the code is open.

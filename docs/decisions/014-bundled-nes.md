@@ -1,6 +1,6 @@
 # 014. Bundle bjarneo's NES theme, for private use only
 
-- **Status:** Accepted
+- **Status:** Superseded by [021](021-remove-bundled-nes.md): the bundled copy was removed
 - **Date:** 2026-11-03
 
 ## Context

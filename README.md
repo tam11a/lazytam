@@ -93,11 +93,17 @@ them in your own `~/.config/hypr/hyprland.conf`.
 </table>
 
 Switch with `lazytam theme set paper`, or press `Super` `Ctrl` `T`. Both themes ship with
-the `afk` and `lives` wallpapers. A bundled copy of [bjarneo's NES theme](themes/nes/SOURCE.md)
-is also included for private use.
+the `afk` and `lives` wallpapers.
 
-Any [Omarchy](https://omarchy.org) theme works: `lazytam theme install <git-url>`. To make
-your own, see [docs/themes.md](docs/themes.md).
+Any [Omarchy](https://omarchy.org) theme works. For example, bjarneo's NES theme, which
+inspired joypad:
+
+```bash
+lazytam theme install https://github.com/bjarneo/omarchy-nes-theme
+```
+
+Installed themes are copied to `~/.config/lazytam/themes/`, so they keep working even if
+their repo disappears. To make your own, see [docs/themes.md](docs/themes.md).
 
 ## How it fits together
 
@@ -140,7 +146,7 @@ rough edges, and please [open an issue](../../issues/new/choose) when you hit on
 ## Credits
 
 - Brand, palettes and wallpaper sources live in the lazytam Figma file ([docs/brand.md](docs/brand.md)).
-- `themes/nes` is a copy of [bjarneo/omarchy-nes-theme](https://github.com/bjarneo/omarchy-nes-theme), kept for private use only. See [its SOURCE.md](themes/nes/SOURCE.md).
+- joypad is inspired by [bjarneo's NES theme](https://github.com/bjarneo/omarchy-nes-theme), with its own colors.
 - Theme format from [Omarchy](https://github.com/basecamp/omarchy).
 
 lazytam doesn't have a license yet, so for now it's for the people it's been shared with.

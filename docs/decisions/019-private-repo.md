@@ -6,8 +6,9 @@
 ## Context
 
 The user wants to share lazytam with friends to use and contribute, and to keep
-developing it with Claude. The repo bundles an unlicensed theme ([014](014-bundled-nes.md))
-and has no license of its own yet ([020](020-license.md)).
+developing it with Claude. It has no license of its own yet ([020](020-license.md)), and
+its early history contains an unlicensed theme that has since been removed
+([021](021-remove-bundled-nes.md)).
 
 ## Decision
 
@@ -20,9 +21,9 @@ and has no license of its own yet ([020](020-license.md)).
 - Cloning needs a GitHub login (`gh auth login`) or SSH key; the README says so.
 - Raw GitHub URLs don't work for private repos, so the README uses relative paths for
   images.
-- Going public requires: a license, removing `themes/nes`, and checking every asset's
-  rights.
+- Going public requires: a license, cleaning the old NES copy out of git history (or a
+  fresh repo), and checking every asset's rights.
 
 ## Alternatives considered
 
-- **Public now:** blocked by the bundled NES theme and the missing license.
+- **Public now:** blocked by the missing license and the NES copy in early history.

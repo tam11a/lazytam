@@ -19,13 +19,14 @@ a new record that supersedes it.
 | [011](011-remote-access.md) | Remote access through SSH keys and Tailscale; never sleep | Server | Accepted |
 | [012](012-recovery.md) | btrfs snapshots around pacman; linux-lts as a fallback kernel | Reliability | Accepted (lts planned) |
 | [013](013-default-themes.md) | joypad (dark, default) and paper (light) are lazytam's own themes | Theming | Accepted |
-| [014](014-bundled-nes.md) | Bundle bjarneo's NES theme, for private use only | Theming / legal | Accepted |
+| [014](014-bundled-nes.md) | Bundle bjarneo's NES theme, for private use only | Theming / legal | Superseded by 021 |
 | [015](015-brand.md) | Figma is the brand's source of truth; the logo is a dwindle layout | Brand | Accepted |
 | [016](016-wallpapers.md) | Wallpapers are Figma components tied to theme variables | Brand | Accepted |
 | [017](017-readme-header.md) | The README header is an animated SVG generated from outlined glyphs | Docs | Accepted |
 | [018](018-testing-and-ci.md) | Unit + CLI tests anywhere, full install in an Arch container in CI | Quality | Accepted |
 | [019](019-private-repo.md) | Host on GitHub as a private repo for now | Project | Accepted |
 | [020](020-license.md) | Choose a license | Project | **Open** |
+| [021](021-remove-bundled-nes.md) | Remove the bundled NES theme; install it like any other theme | Theming / legal | Accepted |
 
 ## Writing a new record
 

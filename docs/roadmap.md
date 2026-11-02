@@ -9,7 +9,7 @@ What lazytam does today, what's next, and everything it could grow into. Items h
 - Install a themed Hyprland desktop and a dev toolchain on fresh Arch with one command.
 - Use the laptop as an always-on box over SSH and Tailscale, lid closed, with Claude Code
   in tmux.
-- Switch between joypad, paper and NES (or any Omarchy theme) and have the whole desktop
+- Switch between joypad and paper (or any Omarchy theme, like bjarneo's NES) and have the whole desktop
   recolor, including the terminal, lock screen, bar, launcher and notifications.
 - Swap your terminal, launcher, browser, editor or file manager in one config line.
 - Update lazytam and the system with `lazytam update`, and check health with
@@ -34,7 +34,7 @@ Everything in the first two commits plus CI:
 - Installer, profiles, modules (core, dev, desktop, laptop, server).
 - Layered config with starter files written once ([D-004](decisions/004-layered-config.md)).
 - Theme engine with Omarchy compatibility, templates for 8 apps, light-theme handling.
-- joypad and paper themes, bundled NES, afk and lives wallpapers.
+- joypad and paper themes with the afk and lives wallpapers.
 - `lazytam` CLI: theme, bg, launch, update, doctor, config.
 - Brand in Figma, animated README, docs, decision records, this roadmap.
 - CI: lint, tests on Python 3.11/3.13, full install in an Arch container. All green.
@@ -91,7 +91,7 @@ Goal: friends can install, update and contribute with confidence.
 | R-23 | **Choose a license.** | S | FR-PRJ-5 | [D-020](decisions/020-license.md) is decided and `LICENSE` exists |
 | R-24 | **Releases.** Version tags, a CHANGELOG, `lazytam update` following releases rather than `main` by default | M | FR-PRJ-6 | v0.5.0 is tagged with notes |
 | R-25 | **Module management.** `lazytam module enable/disable` and `lazytam uninstall` | M | FR-CLI-5, FR-CLI-6 | Turning a module off removes its lazytam-owned files and leaves user files |
-| R-26 | **Public-readiness checklist.** Remove `themes/nes` (or get permission), audit every asset's rights, add a license | S | NFR-26 | Checklist passes |
+| R-26 | **Public-readiness checklist.** Remove the old NES copy from git history (or publish from a fresh repo), audit every asset's rights, add a license | S | NFR-26 | Checklist passes |
 | R-27 | **Figma ↔ theme sync check.** A script that compares Figma variable values with `themes/*/colors.toml` | M | NFR-25 | CI or `make` flags a mismatch |
 | R-28 | **Shell completions** for bash and zsh | S | FR-CLI-7 | Tab completes commands and theme names |
 
@@ -118,5 +118,6 @@ Things we considered and decided against. See the linked decisions before revivi
 | Using HyDE or Omarchy | They take over your config ([D-003](decisions/003-own-framework.md)) |
 | The slate "tam" theme and "dusk" | The look is NES-inspired: joypad and paper ([D-013](decisions/013-default-themes.md)) |
 | Downloading NES at install time | Breaks if the repo goes private ([D-014](decisions/014-bundled-nes.md)) |
+| Bundling the NES theme | Unlicensed and unneeded once joypad and paper were complete ([D-021](decisions/021-remove-bundled-nes.md)) |
 | Glowing, gradient wallpapers | NES look is flat; the user removed all but afk and lives ([D-016](decisions/016-wallpapers.md)) |
 | Testing in a VM | Hyprland needs GPU acceleration; too heavy for 8 GB ([D-018](decisions/018-testing-and-ci.md)) |

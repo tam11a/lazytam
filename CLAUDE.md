@@ -84,8 +84,10 @@ it never touches your real config. Nothing here needs root except `make arch`'s 
 
 ## Things to know
 
-- `themes/nes` is an unlicensed copy of bjarneo's theme kept for private use. Never add it
-  to anything public; it must be removed before the repo is ever made public.
+- Only bundle themes and art that are ours or clearly licensed. Third-party themes are
+  installed with `lazytam theme install`, not copied into `themes/`. Git history before
+  the removal commit still contains an unlicensed NES copy; clean the history (or start a
+  fresh repo) before ever making lazytam public. See [D-021](docs/decisions/021-remove-bundled-nes.md).
 - The brand (logo, palettes, wallpapers, README glyphs) lives in the lazytam Figma file;
   see [docs/brand.md](docs/brand.md). Wallpapers are exported from Figma at 1920×1080.
 - Hyprland's window-rule syntax changes between releases, which is why

@@ -31,4 +31,5 @@ trademark.
 ## Alternatives considered
 
 - **Use bjarneo's NES as the default:** depends on an unlicensed external repo and a
-  trademark; kept as an extra instead ([014](014-bundled-nes.md)).
+  trademark. It was bundled as an extra for a while ([014](014-bundled-nes.md)), then
+  removed ([021](021-remove-bundled-nes.md)); it installs with `lazytam theme install`.

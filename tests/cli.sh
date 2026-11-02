@@ -26,7 +26,7 @@ lt theme render >/dev/null
 grep -q 'col.active_border = rgb(a3a5a1)' "$CUR/hyprland.conf" || fail "joypad accent not rendered"
 ok "joypad renders"
 
-for theme in joypad paper nes; do
+for theme in joypad paper; do
   lt theme set "$theme" >/dev/null
   [[ -e $CUR/background ]] || fail "$theme has no wallpaper"
   grep -q "^theme = \"$theme\"" "$HOME/.config/lazytam/config.toml" || fail "$theme not saved to config"
