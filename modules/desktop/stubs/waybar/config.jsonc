@@ -1,0 +1,4 @@
+// Your Waybar config (lazytam). Defaults are included; keys you add here win.
+{
+  "include": ["@HOME@/.config/lazytam/defaults/waybar/config.jsonc"]
+}

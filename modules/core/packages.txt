@@ -1,0 +1,25 @@
+# Base system: shell tools, snapshots, swap, and the basics every profile needs.
+base-devel
+git
+python
+openssh
+bash-completion
+man-db
+pciutils
+curl
+wget
+unzip
+tmux
+neovim
+zram-generator
+snapper
+snap-pac
+pacman-contrib
+ripgrep
+fd
+fzf
+bat
+eza
+zoxide
+jq
+btop

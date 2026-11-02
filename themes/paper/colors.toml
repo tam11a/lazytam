@@ -1,0 +1,32 @@
+# paper: joypad's light twin. Ink on off-white with the same single red.
+mode = "light"
+
+accent = "#5e5d58"
+selection = "#dcd6ca"
+muted = "#9b978e"
+
+background = "#f2f0eb"
+dark_background = "#e8e5de"
+darker_background = "#ddd9d0"
+lighter_background = "#faf9f6"
+
+foreground = "#2b2a28"
+dark_foreground = "#57554f"
+light_foreground = "#1f1e1c"
+bright_foreground = "#121211"
+
+red = "#c8362d"
+yellow = "#7d7254"
+orange = "#b05f3c"
+green = "#5d6650"
+cyan = "#556264"
+blue = "#565e6b"
+magenta = "#a8332b"
+brown = "#6e2a22"
+
+bright_red = "#a82a22"
+bright_yellow = "#5f5640"
+bright_green = "#464e3b"
+bright_cyan = "#3f4a4c"
+bright_blue = "#3f4652"
+bright_magenta = "#8c2820"

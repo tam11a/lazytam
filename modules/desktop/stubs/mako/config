@@ -1,0 +1,9 @@
+# Your mako config (lazytam). The theme loads first; global overrides go right
+# below it, and [criteria] sections at the end.
+include=@HOME@/.config/lazytam/current/mako.ini
+
+# --- your overrides ---
+
+[urgency=critical]
+border-size=3
+default-timeout=0

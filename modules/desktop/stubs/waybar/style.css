@@ -1,0 +1,5 @@
+/* Your Waybar style (lazytam). Theme colors, then defaults; add your rules below. */
+@import "../lazytam/current/waybar.css";
+@import "../lazytam/defaults/waybar/style.css";
+
+/* --- your overrides --- */

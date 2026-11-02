@@ -1,0 +1,175 @@
+#!/usr/bin/env bash
+# lazytam: theme, update and health commands for the lazytam Hyprland framework.
+set -euo pipefail
+
+LAZYTAM_PATH="${LAZYTAM_PATH:-$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)}"
+# shellcheck source=../lib/common.sh
+source "$LAZYTAM_PATH/lib/common.sh"
+
+usage() {
+  cat <<'EOF'
+usage: lazytam <command> [args]
+
+  theme list                 list installed themes (* = current)
+  theme set <name>           switch theme and reload the desktop
+  theme pick                 choose a theme from your launcher
+  theme install <git-url>    install an Omarchy-format theme from git
+  theme render               re-render configs (after editing config.toml)
+  bg next | apply            next wallpaper of the theme / re-apply it
+  launch tui <cmd> [args]    open a TUI in your configured terminal
+  update                     update lazytam, run migrations, upgrade the system
+  doctor                     check config, packages and starter files
+  config <key>               print a config value
+EOF
+}
+
+cmd_theme() {
+  local sub=${1:-list}
+  shift || true
+  case $sub in
+    list) lt_py theme-list ;;
+    set)
+      [[ $# -eq 1 ]] || die "usage: lazytam theme set <name>"
+      lt_py theme-set "$1"
+      reload_desktop
+      log "theme: $1"
+      ;;
+    pick)
+      local choice
+      choice=$(lt_py theme-list | sed 's/^..//' | $(lt_config launcher_dmenu)) || exit 0
+      [[ -n $choice ]] && cmd_theme set "$choice"
+      ;;
+    install)
+      [[ $# -eq 1 ]] || die "usage: lazytam theme install <git-url>"
+      local url=$1 name
+      name=$(basename "$url" .git)
+      name=${name#omarchy-}
+      name=${name%-theme}
+      local dest="$LAZYTAM_CONFIG/themes/$name"
+      if [[ -d $dest ]]; then
+        git -C "$dest" pull --ff-only
+      else
+        git clone --depth 1 "$url" "$dest"
+      fi
+      [[ -f $dest/colors.toml ]] || warn "$name has no colors.toml; older Omarchy themes need converting"
+      log "installed theme '$name' (lazytam theme set $name)"
+      ;;
+    render)
+      lt_py theme-render
+      reload_desktop
+      ;;
+    *) die "unknown theme command: $sub" ;;
+  esac
+}
+
+cmd_bg() {
+  case ${1:-next} in
+    next) lt_py background 1 >/dev/null; apply_wallpaper ;;
+    apply) apply_wallpaper ;;
+    *) die "usage: lazytam bg next|apply" ;;
+  esac
+}
+
+cmd_launch() {
+  [[ ${1:-} == tui && $# -ge 2 ]] || die "usage: lazytam launch tui <cmd> [args]"
+  shift
+  local termexec
+  termexec=$(lt_config terminal_exec)
+  # shellcheck disable=SC2086 # termexec is a command plus its flags
+  exec $termexec "$@"
+}
+
+run_migrations() {
+  local done_file="$LAZYTAM_STATE/migrations.done" m name
+  mkdir -p "$LAZYTAM_STATE"
+  touch "$done_file"
+  for m in "$LAZYTAM_PATH"/migrations/*.sh; do
+    [[ -e $m ]] || continue
+    name=$(basename "$m")
+    grep -qxF "$name" "$done_file" && continue
+    log "migration $name"
+    bash "$m"
+    echo "$name" >>"$done_file"
+  done
+}
+
+cmd_update() {
+  log "updating lazytam"
+  git -C "$LAZYTAM_PATH" pull --ff-only
+  run_migrations
+  log "upgrading the system"
+  if command -v paru >/dev/null; then paru -Syu --noconfirm; else as_root pacman -Syu --noconfirm; fi
+  local m
+  for m in $(enabled_modules); do
+    install_packages "$LAZYTAM_PATH/modules/$m/packages.txt"
+    install_aur_packages "$LAZYTAM_PATH/modules/$m/aur.txt"
+  done
+  lt_py theme-render
+  reload_desktop
+  log "done"
+}
+
+cmd_doctor() {
+  local problems=0 key bin m pkg missing stub rel
+  _ok()   { printf '  ok    %s\n' "$*"; }
+  _bad()  { printf '  FAIL  %s\n' "$*"; problems=$((problems + 1)); }
+
+  echo "config"
+  if lt_config theme >/dev/null 2>&1; then _ok "$LAZYTAM_CONFIG/config.toml"; else _bad "config.toml does not parse"; fi
+  [[ -d $LAZYTAM_CONFIG/current ]] && _ok "theme rendered ($(cat "$LAZYTAM_CONFIG/current/theme"))" || _bad "no rendered theme (lazytam theme render)"
+  [[ -e $LAZYTAM_CONFIG/defaults ]] && _ok "defaults link" || _bad "missing $LAZYTAM_CONFIG/defaults link (re-run install.sh)"
+
+  echo "packages"
+  for m in $(enabled_modules); do
+    missing=()
+    while IFS= read -r pkg; do
+      pacman -Q "$pkg" >/dev/null 2>&1 || missing+=("$pkg")
+    done < <(read_list "$LAZYTAM_PATH/modules/$m/packages.txt"; read_list "$LAZYTAM_PATH/modules/$m/aur.txt")
+    if ((${#missing[@]})); then _bad "$m: missing ${missing[*]}"; else _ok "$m"; fi
+  done
+
+  if module_enabled desktop; then
+    echo "apps"
+    for key in terminal browser editor file_manager launcher; do
+      bin=$(lt_config "$key")
+      command -v "$bin" >/dev/null && _ok "$key: $bin" || _bad "$key: '$bin' is not installed"
+    done
+  fi
+
+  echo "starter files"
+  for m in $(enabled_modules); do
+    [[ -d $LAZYTAM_PATH/modules/$m/stubs ]] || continue
+    while IFS= read -r -d '' stub; do
+      rel=${stub#"$LAZYTAM_PATH/modules/$m/stubs/"}
+      if [[ ! -f $HOME/.config/$rel ]]; then _bad "~/.config/$rel missing"
+      elif grep -q lazytam "$HOME/.config/$rel"; then _ok "~/.config/$rel"
+      else _bad "~/.config/$rel no longer loads lazytam"; fi
+    done < <(find "$LAZYTAM_PATH/modules/$m/stubs" -type f -print0)
+  done
+
+  if pgrep -x Hyprland >/dev/null 2>&1 && command -v hyprctl >/dev/null; then
+    echo "hyprland"
+    local errs
+    errs=$(hyprctl configerrors 2>/dev/null | grep -v '^$' || true)
+    [[ -z $errs || $errs == "no errors" ]] && _ok "no config errors" || _bad "$errs"
+  fi
+
+  ((problems == 0)) && log "all good" || { warn "$problems problem(s)"; return 1; }
+}
+
+main() {
+  local cmd=${1:-help}
+  shift || true
+  case $cmd in
+    theme) cmd_theme "$@" ;;
+    bg) cmd_bg "$@" ;;
+    launch) cmd_launch "$@" ;;
+    update) cmd_update ;;
+    doctor) cmd_doctor ;;
+    config) [[ $# -eq 1 ]] || die "usage: lazytam config <key>"; lt_config "$1" ;;
+    help | -h | --help) usage ;;
+    *) usage >&2; exit 1 ;;
+  esac
+}
+
+main "$@"

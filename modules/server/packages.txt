@@ -1,0 +1,3 @@
+# Always-on box you reach over SSH.
+openssh
+tailscale

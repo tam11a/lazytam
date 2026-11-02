@@ -1,0 +1,66 @@
+/* lazytam Waybar defaults. Colors (@background, @accent, ...) come from the theme. */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    font-size: 13px;
+}
+
+window#waybar {
+    background: alpha(@background, 0.85);
+    color: @foreground;
+}
+
+tooltip {
+    background: @background;
+    border: 1px solid @accent;
+    border-radius: 10px;
+}
+
+#workspaces button {
+    padding: 0 9px;
+    margin: 4px 2px;
+    border-radius: 8px;
+    color: @muted;
+    background: transparent;
+}
+
+#workspaces button.active {
+    color: @background;
+    background: @accent;
+}
+
+#workspaces button.urgent {
+    color: @red;
+}
+
+#clock,
+#network,
+#bluetooth,
+#wireplumber,
+#cpu,
+#memory,
+#battery,
+#tray {
+    padding: 0 12px;
+    margin: 4px 2px;
+    border-radius: 8px;
+    background: @surface;
+}
+
+#clock {
+    color: @accent;
+    font-weight: bold;
+}
+
+#battery.warning:not(.charging) {
+    color: @orange;
+}
+
+#battery.critical:not(.charging) {
+    color: @red;
+}
+
+#battery.charging {
+    color: @green;
+}

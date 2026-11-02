@@ -1,0 +1,21 @@
+# lazytam config. This file is yours: the installer writes it once and never
+# overwrites it. `lazytam theme set` only rewrites the `theme` line.
+# Run `lazytam theme render` after editing to apply font/app changes.
+
+profile = "laptop-server"
+modules = ["core", "dev", "desktop", "laptop", "server"]
+theme = "joypad"            # built in: joypad (dark), paper (light)
+
+# Appearance
+font = "JetBrainsMono Nerd Font"
+font_size = 11
+
+# Apps. Swap any of these; `lazytam doctor` tells you if one isn't installed.
+terminal = "kitty"          # kitty | foot | ghostty | alacritty | wezterm
+launcher = "fuzzel"         # fuzzel | walker | rofi
+browser = "zen-browser"     # from the zen-browser-bin AUR package
+editor = "nvim"
+file_manager = "yazi"       # TUI, opened in your terminal
+
+# laptop module
+battery_limit = 80          # stop charging at this %, 0 to leave it alone

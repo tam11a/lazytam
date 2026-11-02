@@ -1,0 +1,32 @@
+# joypad: lazytam's default. Charcoal and controller grays with one red button.
+mode = "dark"
+
+accent = "#a3a5a1"
+selection = "#2a2a2a"
+muted = "#5a5a58"
+
+background = "#121212"
+dark_background = "#0d0d0d"
+darker_background = "#080808"
+lighter_background = "#1e1e1e"
+
+foreground = "#d0d0cb"
+dark_foreground = "#a0a19a"
+light_foreground = "#dcdcd7"
+bright_foreground = "#ebebe7"
+
+red = "#e0453b"
+yellow = "#b8b2a0"
+orange = "#c27a6e"
+green = "#a7ad9e"
+cyan = "#9fa9aa"
+blue = "#a0a6b0"
+magenta = "#c4554c"
+brown = "#7d2d27"
+
+bright_red = "#f0473c"
+bright_yellow = "#d6d0be"
+bright_green = "#c4cabb"
+bright_cyan = "#bcc6c7"
+bright_blue = "#bec4ce"
+bright_magenta = "#e06a60"

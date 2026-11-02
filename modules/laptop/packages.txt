@@ -1,0 +1,5 @@
+# Laptop hardware: power profiles, Wi-Fi (iwd), Bluetooth.
+power-profiles-daemon
+iwd
+bluez
+bluez-utils

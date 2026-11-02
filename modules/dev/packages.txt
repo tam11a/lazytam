@@ -1,0 +1,8 @@
+# Development: language versions, git, containers, file manager.
+mise
+lazygit
+git-delta
+github-cli
+podman
+podman-compose
+yazi

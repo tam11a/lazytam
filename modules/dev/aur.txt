@@ -1,0 +1,2 @@
+# Installed with paru (it also handles packages that have moved into the official repos).
+lazydocker
