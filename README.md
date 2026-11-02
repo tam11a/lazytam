@@ -10,6 +10,7 @@
   <a href="#everyday-use">Everyday use</a> ·
   <a href="#themes">Themes</a> ·
   <a href="docs/architecture.md">How it works</a> ·
+  <a href="docs/roadmap.md">Roadmap</a> ·
   <a href="CONTRIBUTING.md">Contributing</a>
 </p>
 
@@ -125,6 +126,10 @@ make readme    # rebuild the animated README headers
 You don't need Arch to work on lazytam: the tests run on any Linux or WSL with Python 3.11+.
 Read [CONTRIBUTING.md](CONTRIBUTING.md) before your first pull request. If you use
 Claude Code, [CLAUDE.md](CLAUDE.md) gives it the project's rules and layout.
+
+The plan lives in [docs/](docs/README.md): the [vision](docs/vision.md),
+[requirements](docs/requirements.md) with IDs and status, the [roadmap](docs/roadmap.md),
+and a record of every [decision](docs/decisions/README.md) so far.
 
 ## Status
 

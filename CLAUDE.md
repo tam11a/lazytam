@@ -9,6 +9,18 @@ a theme engine and a `lazytam` CLI. It runs on the user's machine from
 `~/.local/share/lazytam`. Read [docs/architecture.md](docs/architecture.md) for the full
 picture before larger changes.
 
+## Plan and decisions
+
+[docs/README.md](docs/README.md) indexes the plan. Before larger work, read the
+[roadmap](docs/roadmap.md) item you're working on and any [decision](docs/decisions/README.md)
+it touches. Then keep them current, in the same change:
+
+- Finished or started a roadmap item → update its status there and the matching
+  requirement's status in [docs/requirements.md](docs/requirements.md).
+- Made or changed a decision → add a record in `docs/decisions/` (template in its README).
+  Don't silently contradict an accepted decision; supersede it with a new record.
+- Found a new idea or gap → add it to the roadmap (and a requirement if it's a must).
+
 ## Rules that must not break
 
 1. **Never own the user's files.** Anything under `~/.config` that the user edits is
@@ -42,7 +54,7 @@ picture before larger changes.
 | `themes/<name>/` | Built-in themes: `colors.toml` + `backgrounds/` |
 | `migrations/` | One-time fixes `lazytam update` runs on existing installs |
 | `tests/` | `test_render.py` (unit), `cli.sh` (fake HOME), `arch-install.sh` (container) |
-| `docs/` | Architecture, modules, themes, brand; `docs/assets/build.py` makes the README headers |
+| `docs/` | Plan (vision, requirements, roadmap, decisions) and how-it-works docs; `docs/assets/build.py` makes the README headers |
 
 ## Commands
 
