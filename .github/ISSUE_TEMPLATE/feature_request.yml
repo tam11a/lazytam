@@ -1,0 +1,23 @@
+name: Idea or feature
+description: Suggest a module, template, theme or command.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What do you want to do?
+      description: The problem or the workflow, not the solution yet.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: How could lazytam help?
+  - type: checkboxes
+    id: principles
+    attributes:
+      label: Fits lazytam's rules
+      options:
+        - label: It doesn't write to users' own config files after install
+        - label: It doesn't add packages unless a module the user enabled asks for them
+        - label: It can't lock anyone out of SSH, the network or their session

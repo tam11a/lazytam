@@ -35,8 +35,9 @@ cmd_theme() {
       log "theme: $1"
       ;;
     pick)
-      local choice
-      choice=$(lt_py theme-list | sed 's/^..//' | $(lt_config launcher_dmenu)) || exit 0
+      local choice dmenu
+      read -ra dmenu <<<"$(lt_config launcher_dmenu)"
+      choice=$(lt_py theme-list | sed 's/^..//' | "${dmenu[@]}") || exit 0
       [[ -n $choice ]] && cmd_theme set "$choice"
       ;;
     install)
@@ -124,7 +125,8 @@ cmd_doctor() {
     missing=()
     while IFS= read -r pkg; do
       pacman -Q "$pkg" >/dev/null 2>&1 || missing+=("$pkg")
-    done < <(read_list "$LAZYTAM_PATH/modules/$m/packages.txt"; read_list "$LAZYTAM_PATH/modules/$m/aur.txt")
+    done < <(read_list "$LAZYTAM_PATH/modules/$m/packages.txt"
+             [[ ${LAZYTAM_SKIP_AUR:-0} == 1 ]] || read_list "$LAZYTAM_PATH/modules/$m/aur.txt")
     if ((${#missing[@]})); then _bad "$m: missing ${missing[*]}"; else _ok "$m"; fi
   done
 
@@ -141,9 +143,9 @@ cmd_doctor() {
     [[ -d $LAZYTAM_PATH/modules/$m/stubs ]] || continue
     while IFS= read -r -d '' stub; do
       rel=${stub#"$LAZYTAM_PATH/modules/$m/stubs/"}
-      if [[ ! -f $HOME/.config/$rel ]]; then _bad "~/.config/$rel missing"
-      elif grep -q lazytam "$HOME/.config/$rel"; then _ok "~/.config/$rel"
-      else _bad "~/.config/$rel no longer loads lazytam"; fi
+      if [[ ! -f $HOME/.config/$rel ]]; then _bad "$HOME/.config/$rel missing"
+      elif grep -q lazytam "$HOME/.config/$rel"; then _ok "$HOME/.config/$rel"
+      else _bad "$HOME/.config/$rel no longer loads lazytam"; fi
     done < <(find "$LAZYTAM_PATH/modules/$m/stubs" -type f -print0)
   done
 

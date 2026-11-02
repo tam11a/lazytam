@@ -121,8 +121,8 @@ reload_desktop() {
 
 apply_wallpaper() {
   command -v swww >/dev/null || return 0
-  local i
-  for i in 1 2 3 4 5 6 7 8 9 10; do
+  local _
+  for _ in 1 2 3 4 5 6 7 8 9 10; do
     swww query >/dev/null 2>&1 && break
     sleep 0.3
   done

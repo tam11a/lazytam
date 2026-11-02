@@ -1,0 +1,39 @@
+name: Bug report
+description: Something broke or looks wrong.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what you got instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. lazytam theme set paper
+        2. …
+  - type: textarea
+    id: doctor
+    attributes:
+      label: lazytam doctor
+      description: Paste the output of `lazytam doctor`.
+      render: text
+  - type: input
+    id: profile
+    attributes:
+      label: Profile and modules
+      placeholder: "laptop-server (core dev desktop laptop server)"
+  - type: input
+    id: hardware
+    attributes:
+      label: Hardware
+      placeholder: "ASUS VivoBook S15, Ryzen 7 4700U, Realtek 8821CE"
+  - type: input
+    id: hyprland
+    attributes:
+      label: Hyprland version
+      description: Output of `hyprctl version | head -1`, if it's a desktop issue.
