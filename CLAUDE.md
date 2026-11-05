@@ -92,7 +92,10 @@ it never touches your real config. Nothing here needs root except `make arch`'s 
   ([docs/brand.md](docs/brand.md#using-the-brand), [D-020](docs/decisions/020-license.md)).
 - The brand (logo, palettes, wallpapers, README glyphs) lives in the lazytam Figma file;
   see [docs/brand.md](docs/brand.md). Wallpapers are exported from Figma at 1920×1080.
+- Hyprland 0.57+ reads only Lua, so `defaults/hypr/` and its templates are Lua
+  ([D-022](docs/decisions/022-hyprland-lua.md)); hyprlock and hypridle still use `.conf`.
+  After changing them, run `Hyprland --verify-config -c ~/.config/hypr/hyprland.lua`.
 - Hyprland's window-rule syntax changes between releases, which is why
-  `defaults/hypr/rules.conf` is empty. Check `hyprctl version` before adding rules.
+  `defaults/hypr/rules.lua` is empty. Check `hyprctl version` before adding rules.
 - Nothing has run on real hardware much yet. When you change module setup, say what you
   could and couldn't verify.

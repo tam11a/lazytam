@@ -23,7 +23,7 @@ ln -s "$REPO/defaults" "$HOME/.config/lazytam/defaults"
 ok "config defaults"
 
 lt theme render >/dev/null
-grep -q 'col.active_border = rgb(a3a5a1)' "$CUR/hyprland.conf" || fail "joypad accent not rendered"
+grep -q 'active_border = "rgb(a3a5a1)"' "$CUR/hyprland.lua" || fail "joypad accent not rendered"
 ok "joypad renders"
 
 for theme in joypad paper; do
@@ -46,12 +46,19 @@ ok "bg next cycles"
 # shellcheck source=../lib/common.sh
 source "$REPO/lib/common.sh"
 for m in core desktop; do place_stubs "$REPO/modules/$m/stubs" >/dev/null; done
-grep -q lazytam "$HOME/.config/hypr/hyprland.conf" || fail "hyprland starter file"
-echo "# my own line" >>"$HOME/.config/hypr/hyprland.conf"
+grep -q lazytam "$HOME/.config/hypr/hyprland.lua" || fail "hyprland starter file"
+echo "-- my own line" >>"$HOME/.config/hypr/hyprland.lua"
 for m in core desktop; do place_stubs "$REPO/modules/$m/stubs" >/dev/null; done
-grep -q "my own line" "$HOME/.config/hypr/hyprland.conf" || fail "re-run overwrote a user file"
+grep -q "my own line" "$HOME/.config/hypr/hyprland.lua" || fail "re-run overwrote a user file"
 [[ -z $(find "$HOME/.config" -name '*.pre-lazytam') ]] || fail "re-run made backups"
 ok "starter files are written once and left alone"
+
+# An install from before the Lua port: Hyprland generated its own hyprland.lua.
+echo "-- stock config" >"$HOME/.config/hypr/hyprland.lua"
+bash "$REPO/migrations/202611051200-hyprland-lua.sh" >/dev/null 2>&1
+grep -q lazytam "$HOME/.config/hypr/hyprland.lua" || fail "migration did not place the Lua starter file"
+grep -q "stock config" "$HOME/.config/hypr/hyprland.lua.pre-lazytam" || fail "migration did not back up hyprland.lua"
+ok "migration replaces a generated hyprland.lua and keeps a backup"
 
 if command -v tmux >/dev/null; then
   tmux -L lazytam-test -f "$HOME/.config/tmux/tmux.conf" new-session -d

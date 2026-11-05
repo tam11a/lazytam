@@ -64,8 +64,8 @@ class RenderTest(unittest.TestCase):
     def test_color_formats(self):
         self.add_theme("full", self.FULL)
         self.lt.render("full")
-        hypr = (self.lt.CURRENT / "hyprland.conf").read_text()
-        self.assertIn("col.active_border = rgb(8fb8de)", hypr)
+        hypr = (self.lt.CURRENT / "hyprland.lua").read_text()
+        self.assertIn('active_border = "rgb(8fb8de)"', hypr)
         self.assertEqual(self.lt.substitute("{{accent.rgb}}", {"accent": "#8fb8de"}, "t"), "143, 184, 222")
 
     def test_minimal_theme_uses_fallbacks(self):

@@ -11,14 +11,17 @@ lazytam has three layers, loaded in this order. Later layers win.
 Each app's file in `~/.config` is a small starter file that loads the first two layers and
 then leaves room for your overrides. For Hyprland:
 
-```ini
-# ~/.config/hypr/hyprland.conf  (yours)
-source = ~/.config/lazytam/current/apps.conf        # $terminal, $launcher… from config.toml
-source = ~/.config/lazytam/defaults/hypr/hyprland.conf
-source = ~/.config/lazytam/current/hyprland.conf    # theme colors
-monitor = , preferred, auto, 1
-# --- your overrides ---
+```lua
+-- ~/.config/hypr/hyprland.lua  (yours)
+require("~/.config/lazytam/defaults/hypr/hyprland.lua")  -- binds read current/apps.lua (from config.toml)
+require("~/.config/lazytam/current/hyprland.lua")        -- theme colors
+hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1 })
+-- --- your overrides ---
 ```
+
+The real file uses full paths, because `require` doesn't expand `~`. Hyprland 0.57 and later
+read only Lua, so `hyprlock.conf` and `hypridle.conf` are the only Hyprland-family files still
+in the old format ([D-022](decisions/022-hyprland-lua.md)).
 
 `~/.config/lazytam/defaults` is a symlink into the repo, so starter files can use one
 stable path.
@@ -55,7 +58,7 @@ Running it again re-checks every step and changes only what's missing.
 5. Points `current/background` at the theme's first wallpaper.
 
 `bin/lazytam` then reloads whatever is running: `hyprctl reload`, Waybar (`SIGUSR2`),
-`makoctl reload`, kitty (`SIGUSR1`) and the wallpaper through swww.
+`makoctl reload`, kitty (`SIGUSR1`) and the wallpaper through awww.
 
 Details and the color keys are in [themes.md](themes.md).
 

@@ -12,7 +12,7 @@ mako
 libnotify
 fuzzel
 kitty
-swww
+awww
 wl-clipboard
 cliphist
 grim

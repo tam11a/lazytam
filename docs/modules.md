@@ -7,7 +7,7 @@ A module is a folder in `modules/`. Users turn modules on in the `modules` list 
 |---|---|
 | `core` | Shell tools (ripgrep, fd, fzf, bat, eza, zoxide, btop, tmux, neovim), zram swap, snapper on btrfs, weekly pacman cache cleanup, shell defaults, btop theme |
 | `dev` | mise, lazygit, git-delta, GitHub CLI, podman + lazydocker, yazi, Claude Code |
-| `desktop` | Hyprland with hyprlock/hypridle/uwsm, Waybar, mako, fuzzel, kitty, swww, PipeWire, fonts, Zen browser |
+| `desktop` | Hyprland with hyprlock/hypridle/uwsm, Waybar, mako, fuzzel, kitty, awww, PipeWire, fonts, Zen browser |
 | `laptop` | power-profiles-daemon, battery charge limit, iwd + impala, Bluetooth + bluetui, Realtek 8821CE Wi-Fi fix |
 | `server` | sshd + Tailscale, no sleep, lid ignored, console blanking, key-only SSH once a key exists |
 
