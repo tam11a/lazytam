@@ -62,7 +62,7 @@ hardware (`hw`), or not yet (`—`).
 | FR-DSK-1 | Hyprland starts on demand with `uwsm start hyprland.desktop`, never automatically | Done | — |
 | FR-DSK-2 | Default keybindings for apps, windows, workspaces, scratchpad, theme, wallpaper, clipboard, lock, screenshots, media keys | Done | — |
 | FR-DSK-3 | Waybar shows workspaces, clock, network, Bluetooth, audio, CPU, memory, battery and tray; clicks open the matching TUI | Done | — |
-| FR-DSK-4 | Idle: dim at 2.5 min, lock at 5, screen off at 5.5; never suspend | Done | — |
+| FR-DSK-4 | Idle on battery: dim at 2.5 min, lock at 5, screen off at 5.5; none of these on the charger; never suspend | Done | — |
 | FR-DSK-5 | Lock screen shows the theme's wallpaper, or a blurred screenshot when there's none | Done | unit |
 | FR-DSK-6 | `lazytam menu`: one launcher menu for Wi-Fi, Bluetooth, audio, power, theme, wallpaper, screenshots | Planned | — |
 | FR-DSK-7 | A power menu: lock, log out, reboot, shut down | Planned | — |
