@@ -50,8 +50,8 @@ hardware (`hw`), or not yet (`—`).
 | FR-THM-8 | Each theme's wallpapers cycle with `lazytam bg next`; the position resets when the theme changes | Done | unit, cli |
 | FR-THM-9 | `lazytam theme pick` (`Super` `Ctrl` `T`) chooses a theme from the launcher | Done | — |
 | FR-THM-10 | Older Omarchy themes' finished per-app files override rendered ones, except files pointing into Omarchy's install | Done | unit |
-| FR-THM-11 | Templates for more apps: ghostty, foot, alacritty, walker, yazi, lazygit, neovim, Zen (`userChrome.css`) | Planned | — |
-| FR-THM-12 | GTK and Qt apps follow the theme's light/dark mode; the theme's `icons.theme` is applied | Planned | — |
+| FR-THM-11 | Templates for more apps: ghostty, foot, alacritty, walker, yazi, lazygit, neovim, Zen (`userChrome.css`) | Started: Zen done | — |
+| FR-THM-12 | GTK and Qt apps follow the theme's light/dark mode; the theme's `icons.theme` is applied | Started: `color-scheme` set | — |
 | FR-THM-13 | Switch between a dark and light theme automatically by time of day (joypad ↔ paper) | Idea | — |
 | FR-THM-14 | Generate a theme from a wallpaper | Idea | — |
 

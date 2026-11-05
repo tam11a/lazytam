@@ -109,8 +109,31 @@ module_enabled() {
   return 1
 }
 
+# Tell apps the theme's mode, and point every Zen profile at the rendered colors.
+# shortcut: Zen has no profile until its first launch, so a new one gets colors on the next render or update.
+sync_app_themes() {
+  command -v gsettings >/dev/null && gsettings set org.gnome.desktop.interface color-scheme "prefer-$(lt_py color mode)" 2>/dev/null || true
+  local prefs profile css import
+  import="@import url(\"file://$LAZYTAM_CONFIG/current/zen.css\"); /* lazytam */"
+  for prefs in "$HOME"/.config/zen/*/prefs.js; do
+    [[ -e $prefs ]] || continue
+    profile=${prefs%/prefs.js}
+    css=$profile/chrome/userChrome.css
+    mkdir -p "$profile/chrome"
+    if [[ ! -e $css ]]; then
+      echo "$import" >"$css"
+    elif ! grep -q lazytam "$css"; then
+      warn "$css is yours, so Zen won't follow the theme. To opt in, make this its first line: $import"
+    fi
+    grep -qs legacyUserProfileCustomizations "$profile/user.js" \
+      || echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true); // lazytam' >>"$profile/user.js"
+  done
+  if pgrep -x zen-bin >/dev/null 2>&1; then log "restart Zen Browser to apply the theme there"; fi
+}
+
 # Reload whatever is running so a theme change shows up immediately.
 reload_desktop() {
+  sync_app_themes
   pgrep -x Hyprland >/dev/null 2>&1 || return 0
   hyprctl reload >/dev/null 2>&1 || true
   pkill -SIGUSR2 -x waybar 2>/dev/null || true

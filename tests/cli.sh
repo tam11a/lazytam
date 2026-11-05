@@ -9,6 +9,10 @@ trap 'rm -rf "$WORK"' EXIT
 export HOME=$WORK/home LAZYTAM_PATH=$REPO
 unset LAZYTAM_CONFIG LAZYTAM_STATE
 mkdir -p "$HOME"
+# A fake HOME doesn't isolate the session: keep tests away from a real desktop's settings and apps.
+gsettings() { :; }
+pgrep() { return 1; }
+export -f gsettings pgrep
 
 CUR=$HOME/.config/lazytam/current
 lt() { bash "$REPO/bin/lazytam" "$@"; }
@@ -59,6 +63,19 @@ bash "$REPO/migrations/202611051200-hyprland-lua.sh" >/dev/null 2>&1
 grep -q lazytam "$HOME/.config/hypr/hyprland.lua" || fail "migration did not place the Lua starter file"
 grep -q "stock config" "$HOME/.config/hypr/hyprland.lua.pre-lazytam" || fail "migration did not back up hyprland.lua"
 ok "migration replaces a generated hyprland.lua and keeps a backup"
+
+zen=$HOME/.config/zen/test.profile
+mine=$HOME/.config/zen/mine.profile
+mkdir -p "$zen" "$mine/chrome"
+touch "$zen/prefs.js" "$mine/prefs.js"
+echo "/* my own css */" >"$mine/chrome/userChrome.css"
+lt theme render >/dev/null 2>&1
+lt theme render >/dev/null 2>&1
+grep -q "current/zen.css" "$zen/chrome/userChrome.css" || fail "Zen profile doesn't load the theme"
+[[ $(wc -l <"$zen/user.js") -eq 1 ]] || fail "Zen user.js should get one line, once"
+[[ $(cat "$mine/chrome/userChrome.css") == "/* my own css */" ]] || fail "overwrote a user's userChrome.css"
+grep -q -- "--zen-branding-bg: #" "$CUR/zen.css" || fail "Zen colors not rendered"
+ok "Zen profiles follow the theme and keep a user's own css"
 
 if command -v tmux >/dev/null; then
   tmux -L lazytam-test -f "$HOME/.config/tmux/tmux.conf" new-session -d

@@ -74,6 +74,7 @@ fi
 
 log "rendering theme"
 lt_py theme-render
+sync_app_themes
 
 log "done"
 cat <<EOF
