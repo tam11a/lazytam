@@ -23,7 +23,7 @@ files load last, and updates only ever touch lazytam's own folder.
 
 | | |
 |---|---|
-| **Your files stay yours** | `~/.config/hypr/hyprland.conf` and friends are yours. They load lazytam's defaults, then your overrides. Updates never write to them. |
+| **Your files stay yours** | `~/.config/hypr/hyprland.lua` and friends are yours. They load lazytam's defaults, then your overrides. Updates never write to them. |
 | **Swap anything** | Terminal, launcher, browser, editor, file manager: one line each in `~/.config/lazytam/config.toml`. |
 | **Nothing you didn't ask for** | Modules list every package they install. No Chromium, no bundled apps to remove. TUIs first. |
 | **Themes are just colors** | One `colors.toml` recolors Hyprland, Waybar, kitty, the lock screen, fuzzel, mako, btop and tmux. Omarchy themes drop straight in. |
@@ -76,8 +76,8 @@ lazytam config <key>             # print a config value
 | `Super` `Ctrl` `T` · `W` · `V` | Theme picker · next wallpaper · clipboard history |
 | `Super` `Esc` · `Print` | Lock · screenshot region to clipboard |
 
-The full list is in [`defaults/hypr/binds.conf`](defaults/hypr/binds.conf). Override any of
-them in your own `~/.config/hypr/hyprland.conf`.
+The full list is in [`defaults/hypr/binds.lua`](defaults/hypr/binds.lua). Override any of
+them in your own `~/.config/hypr/hyprland.lua`.
 
 ## Themes
 
@@ -114,7 +114,7 @@ their repo disappears. To make your own, see [docs/themes.md](docs/themes.md).
 ├── themes/                    themes you installed
 ├── defaults -> ~/.local/share/lazytam/defaults
 └── current/                   rendered by `lazytam theme`: app list + theme colors
-~/.config/hypr/hyprland.conf   yours: loads current/apps.conf, defaults, theme, then you
+~/.config/hypr/hyprland.lua    yours: loads defaults, theme, then you
 ```
 
 [docs/architecture.md](docs/architecture.md) walks through install, rendering and updates.

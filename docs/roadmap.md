@@ -56,6 +56,7 @@ Goal: lazytam runs on the ASUS laptop every day without surprises.
 | R-08 | **Fix what real hardware finds.** Track each bug as an issue; extend `doctor` (services running, battery limit applied, Wi-Fi quirk loaded) | M | FR-CLI-3 | No open bugs from the first week of daily use |
 | R-09 | **Readable muted text.** Lighten `muted` or stop using it for text, in both themes and Figma | S | NFR-23 | Every text role is at least 4.5:1 |
 | R-10 | **Measure.** Record idle RAM (headless and desktop) and install time on the laptop | S | NFR-6, NFR-8 | Numbers written into requirements.md |
+| R-36 | **Port the Hyprland config to Lua.** Hyprland 0.57 removed `hyprland.conf` ([D-022](decisions/022-hyprland-lua.md)). *Started.* | M | — | A fresh install and an updated one both start with the bar, wallpaper and theme |
 
 ## v0.3 Daily driver
 

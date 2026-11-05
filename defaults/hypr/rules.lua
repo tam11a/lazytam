@@ -1,0 +1,3 @@
+-- Window and layer rules. Left empty on purpose: the rule syntax has changed
+-- across Hyprland releases, so add rules in your own hyprland.lua using the
+-- syntax from the wiki for your installed version (hyprctl version).

@@ -120,15 +120,15 @@ reload_desktop() {
 }
 
 apply_wallpaper() {
-  command -v swww >/dev/null || return 0
+  command -v awww >/dev/null || return 0
   local _
   for _ in 1 2 3 4 5 6 7 8 9 10; do
-    swww query >/dev/null 2>&1 && break
+    awww query >/dev/null 2>&1 && break
     sleep 0.3
   done
   if [[ -e $LAZYTAM_CONFIG/current/background ]]; then
-    swww img "$LAZYTAM_CONFIG/current/background" --transition-type grow --transition-duration 1.2 >/dev/null 2>&1 || true
+    awww img "$LAZYTAM_CONFIG/current/background" --transition-type grow --transition-duration 1.2 >/dev/null 2>&1 || true
   else
-    swww clear "$(lt_py color background | tr -d '#')" >/dev/null 2>&1 || true
+    awww clear "$(lt_py color background | tr -d '#')" >/dev/null 2>&1 || true
   fi
 }
