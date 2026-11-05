@@ -1,6 +1,6 @@
 # 009. Start Hyprland on demand with uwsm; lock but never suspend
 
-- **Status:** Accepted
+- **Status:** Accepted (idle timing superseded by [024](024-idle-on-charger.md))
 - **Date:** 2026-11-03
 
 ## Context
