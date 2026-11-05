@@ -28,6 +28,7 @@ a new record that supersedes it.
 | [020](020-license.md) | Code and docs under MIT; the brand stays reserved | Project / legal | Accepted |
 | [021](021-remove-bundled-nes.md) | Remove the bundled NES theme; install it like any other theme | Theming / legal | Accepted |
 | [022](022-hyprland-lua.md) | Configure Hyprland in Lua, since 0.57 removed `hyprland.conf` | Desktop | Accepted |
+| [023](023-zen-theme.md) | Zen follows the theme through its profile's `userChrome.css` | Theming | Accepted |
 
 ## Writing a new record
 

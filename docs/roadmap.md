@@ -65,8 +65,8 @@ Goal: the desktop feels finished when used in hand.
 | ID | Item | Size | Satisfies | Done when |
 |---|---|---|---|---|
 | R-11 | **`lazytam menu`.** One fuzzel menu: Wi-Fi, Bluetooth, audio, power (lock, log out, reboot, shut down), theme, wallpaper, screenshot, clipboard | L | FR-DSK-6, FR-DSK-7 | Everything in the list works from `Super` `Alt` `Space` without touching a terminal |
-| R-12 | **More templates.** ghostty, foot, alacritty, walker, yazi, lazygit, Neovim colors, Zen `userChrome.css` | M each | FR-THM-11 | Switching themes recolors each of these live |
-| R-13 | **GTK, Qt and icons.** Dark/light preference follows the theme; apply `icons.theme` | M | FR-THM-12 | GTK and Qt apps match the theme's mode |
+| R-12 | **More templates.** ghostty, foot, alacritty, walker, yazi, lazygit, Neovim colors. *Zen `userChrome.css` is done, applied on restart ([D-023](decisions/023-zen-theme.md)).* | M each | FR-THM-11 | Switching themes recolors each of these live |
+| R-13 | **GTK, Qt and icons.** Dark/light preference follows the theme; apply `icons.theme`. *Started: `color-scheme` is set.* | M | FR-THM-12 | GTK and Qt apps match the theme's mode |
 | R-14 | **Window rules.** Floating dialogs, picture-in-picture, pinned to the installed Hyprland syntax | S | FR-DSK-8 | Rules load with no config errors |
 | R-15 | **Install chosen apps.** When `config.toml` names an app that isn't installed, offer to install it | S | FR-CFG-5 | Changing `terminal = "foot"` and re-rendering gets you foot |
 | R-16 | **More wallpapers.** The user crafts new designs as Figma components; export for every theme | M | — | At least four wallpapers per theme |

@@ -26,7 +26,7 @@ files load last, and updates only ever touch lazytam's own folder.
 | **Your files stay yours** | `~/.config/hypr/hyprland.lua` and friends are yours. They load lazytam's defaults, then your overrides. Updates never write to them. |
 | **Swap anything** | Terminal, launcher, browser, editor, file manager: one line each in `~/.config/lazytam/config.toml`. |
 | **Nothing you didn't ask for** | Modules list every package they install. No Chromium, no bundled apps to remove. TUIs first. |
-| **Themes are just colors** | One `colors.toml` recolors Hyprland, Waybar, kitty, the lock screen, fuzzel, mako, btop and tmux. Omarchy themes drop straight in. |
+| **Themes are just colors** | One `colors.toml` recolors Hyprland, Waybar, kitty, the lock screen, fuzzel, mako, btop, tmux and Zen. Omarchy themes drop straight in. |
 
 ## Install
 

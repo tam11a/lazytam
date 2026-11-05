@@ -76,6 +76,14 @@ An unknown placeholder stops rendering with an error that names the template.
 4. Run `make test`; the unit tests render every template for a full theme and fail on
    leftover `{{`.
 
+### Zen Browser
+
+Each Zen profile gets a one-line `chrome/userChrome.css` that imports `current/zen.css`, plus
+one line in `user.js` to turn on userChrome support. An existing `userChrome.css` is left
+alone, and lazytam prints the line to add yourself. Restart Zen after switching themes. The
+theme's `mode` also sets the desktop's light/dark preference, which applies live. See
+[D-023](decisions/023-zen-theme.md).
+
 ## Wallpapers
 
 Name them `N-name.png` in `backgrounds/`; `lazytam bg next` (`Super` `Ctrl` `W`) cycles in

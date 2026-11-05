@@ -54,7 +54,8 @@ Rules:
 - **Never lock people out.** Anything touching SSH, networking or login needs a safe path,
   and a `warn` that says what's left for the user to do.
 - **No user files.** Starter files go in `stubs/`; don't write to `~/.config/<app>` from
-  `setup.sh`. (Appending one `source` line to `~/.bashrc`, as `core` does, is the exception.)
+  `setup.sh`. (Appending one `source` line to `~/.bashrc`, as `core` does, and the Zen profile
+  lines from [D-023](decisions/023-zen-theme.md), are the exceptions.)
 
 ### stubs/
 
